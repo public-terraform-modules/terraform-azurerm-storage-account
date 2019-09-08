@@ -21,7 +21,7 @@ resource "azurerm_storage_account" "blob_sa" {
 resource "azurerm_storage_container" "blob_container" {
   name                 = "${var.storage_container_name}"
   resource_group_name  = "${azurerm_resource_group.blob_rg.name}"
-  storage_account_name = "${azurerm_storage_account.remozte_state_sa.name}"
+  storage_account_name = "${azurerm_storage_account.blob_sa.name}"
   container_access_type = "${var.container_access_type}"
 }
 

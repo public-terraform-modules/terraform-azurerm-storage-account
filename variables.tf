@@ -1,5 +1,5 @@
 variable "resource_group_name" {
-  description = "(Optional) The name of the resource group in which to create the storage account. Changing this forces a new resource to be created. If omitted, will create a new RG based on the `name` above"
+  description = "(Required) The name of the resource group in which to create the storage account. Changing this forces a new resource to be created. If omitted, will create a new RG based on the `name` above"
 }
 
 variable "storage_account_name" {
