@@ -20,13 +20,3 @@ resource "azurerm_storage_container" "blob_container" {
   storage_account_name = "${azurerm_storage_account.blob_sa.name}"
   container_access_type = "${var.container_access_type}"
 }
-
-resource "azurerm_storage_blob" "blob" {
-  name = "${var.blob_storage_name}"
-
-  resource_group_name    = "${var.resource_group_name}"
-  storage_account_name   = "${azurerm_storage_account.blob_sa.name}"
-  storage_container_name = "${azurerm_storage_container.blob_container.name}"
-
-  type = "block"
-}

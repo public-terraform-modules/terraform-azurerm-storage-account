@@ -28,7 +28,3 @@ variable "container_access_type" {
   description = "(Optional) The Access Level configured for this Container. Possible values are blob, container or private. Defaults to private."
   default = "private"
 }
-
-variable "blob_storage_name" {
-  description = "(Required) The name of the storage blob. Must be unique within the storage container the blob is located."
-}

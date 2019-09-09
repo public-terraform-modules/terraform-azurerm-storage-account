@@ -17,11 +17,3 @@ output "storage_container_name" {
 output "storage_container_id" {
   value = "${azurerm_storage_container.blob_container.id}"
 }
-
-output "blob_storage_name" {
-  value = "${azurerm_storage_blob.blob.name}"
-}
-
-output "blob_storage_id" {
-  value = "${azurerm_storage_blob.blob.id}"
-}
