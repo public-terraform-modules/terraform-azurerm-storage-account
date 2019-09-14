@@ -20,11 +20,12 @@ variable "storage_account_replication_type" {
   default     = "LRS"
 }
 
-variable "storage_container_name" {
-  description = "(Required) The name of the Container which should be created within the Storage Account"
+## A network_rules block 
+variable "default_action" {
+  descirption = "(Required) Specifies the default action of allow or deny when no other rules match. Valid options are Deny or Allow"
+  default = "Deny"
 }
 
-variable "container_access_type" {
-  description = "(Optional) The Access Level configured for this Container. Possible values are blob, container or private. Defaults to private."
-  default = "private"
+variable "virtual_network_subnet_ids" {
+  descirption = "(Required) A list of resource ids for subnets."
 }

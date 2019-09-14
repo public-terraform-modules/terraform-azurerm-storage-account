@@ -12,11 +12,9 @@ resource "azurerm_storage_account" "blob_sa" {
   account_tier             = "${var.storage_account_tier}"
   resource_group_name      = "${var.resource_group_name}"
   account_replication_type = "${var.storage_account_replication_type}"
-}
 
-resource "azurerm_storage_container" "blob_container" {
-  name                 = "${var.storage_container_name}"
-  resource_group_name  = "${var.resource_group_name}"
-  storage_account_name = "${azurerm_storage_account.blob_sa.name}"
-  container_access_type = "${var.container_access_type}"
+  network_rules {
+    default_action             = "${var.default_action}"
+    virtual_network_subnet_ids = "${var.virtual_network_subnet_ids}"
+  }
 }
