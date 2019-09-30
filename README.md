@@ -1,14 +1,10 @@
-# azurerm-terraform-remote-state-storage
-Terraform module to set up a storage account on Azure and prep it for use as remote state storage
+# azurerm-terraform-blob-storage
+Terraform module to set up a storage account on Azure for Azure Blob storage and Azure Files
 
-This module makes up part of a quick-start set of modules.  This is intended to be used prior to a larger deployment to
-provide remote state capability in the beginning of a project to help prevent isolation of work.
-
-This module is intended to be used independently of larger configurations, to provide separation of responsibility.
-
+---- Under construction -----
 ## Usage
 ```hcl-terraform
-module "remote-state-storage"{
+module "blob-storage"{
   source   = "sjones-sot/remote-state-storage/azurerm"
   name     = "myremotestorage"
   location = "westeurope"
