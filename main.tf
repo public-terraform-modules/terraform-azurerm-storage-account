@@ -6,7 +6,7 @@ provider "azurerm" {
   version = ">= 1.1.0"
 }
 
-resource "azurerm_storage_account" "blob_sa" {
+resource "azurerm_storage_account" "sa" {
   name                     = "${var.storage_account_name}"
   location                 = "${var.location}"
   account_tier             = "${var.storage_account_tier}"
@@ -15,6 +15,6 @@ resource "azurerm_storage_account" "blob_sa" {
 
   network_rules {
     default_action             = "${var.default_action}"
-    virtual_network_subnet_ids = "${var.virtual_network_subnet_ids}"
+    virtual_network_subnet_ids = ["${var.virtual_network_subnet_ids}"]
   }
 }

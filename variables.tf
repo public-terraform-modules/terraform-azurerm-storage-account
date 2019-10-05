@@ -28,4 +28,5 @@ variable "default_action" {
 
 variable "virtual_network_subnet_ids" {
   descirption = "(Required) A list of resource ids for subnets."
+  tyoe = "list"
 }
