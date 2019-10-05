@@ -1,4 +1,4 @@
-# azurerm-terraform-blob-storage
+# azurerm-terraform-storage-account
 Terraform module to set up a storage account on Azure for Azure Blob storage and Azure Files
 
 ---- Under construction -----
