@@ -29,6 +29,7 @@ module "storage-account"{
   resource_group_name                      = "${data.azurerm_resource_group.rg.name}"
   virtual_network_subnet_ids               = "${list(data.azurerm_subnet.subnet_0.id,data.azurerm_subnet.subnet_1.id)}"  
 }
+```
 
 ## Authors
 
