@@ -1,41 +1,39 @@
 # azurerm-terraform-storage-account
 Terraform module to set up a storage account on Azure for Azure Blob storage and Azure Files
 
----- Under construction -----
 ## Usage
+This contains the bare minimum options to be configured for the storage account to be provisioned.
+
 ```hcl-terraform
-module "blob-storage"{
-  source   = "sjones-sot/remote-state-storage/azurerm"
-  name     = "myremotestorage"
-  location = "westeurope"
+
+data "azurerm_resource_group" "rg" {
+  name = "rg"
 }
 
-```
-Due to the nature of backend config, you will need to make note of the outputs of the module.
-These can later be used as the following example illustrates:
-```hcl-terraform
-terraform{
-  backend "azurerm" {
-    storage_account_name = "demoremotestates"
-    container_name       = "demo-remote-state-container"
-    key                  = "mydemo/terraform.tfstate"
-    resource_group_name  = "demo-remote-state-rg"
-  }
+data "azurerm_subnet" "subnet_0" {
+  name                 = "subnet-0"
+  virtual_network_name = "vnet"
+  resource_group_name  = "${data.azurerm_resource_group.rg.name}"
 }
-```
 
-
-
-## Limitations and Notes
-Management locks - I'd recommend setting a delete lock on this storage account.  If you run your terraform client as an `owner` rather than `contributor` you can add something like the following to do this automatically:
-```hcl-terraform
-resource "azurerm_management_lock" "state_storage_delete_lock"{
-  name       = "statefiles-nodelete-lock"
-  scope      = "${module.remote_state_storage.storage_account_id}"
-  lock_level = "CanNotDelete"
-  notes      = "Some meaningful notes here"
+data "azurerm_subnet" "subnet_1" {
+  name                 = "subnet-1"
+  virtual_network_name = "vnet"
+  resource_group_name  = "${data.azurerm_resource_group.rg.name}"
 }
-```
 
-NB: I do _not_ recommend running your terraform app as `owner`.
+module "storage-account"{
+  source                                   = "github.com/public-terraform-module-registry/terraform-azurerm-storage-account.git"
+  name                                     = "mystorage"
+  location                                 = "East US"
+  resource_group_name                      = "${data.azurerm_resource_group.rg.name}"
+  virtual_network_subnet_ids               = "${list(data.azurerm_subnet.subnet_0.id,data.azurerm_subnet.subnet_1.id)}"  
+}
 
+## Authors
+
+Originally created by [tomu](https://github.com/nm7-jp)
+
+## License
+
+[MIT](LICENSE)
