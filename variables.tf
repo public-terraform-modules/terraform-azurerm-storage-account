@@ -22,11 +22,11 @@ variable "storage_account_replication_type" {
 
 ## A network_rules block 
 variable "default_action" {
-  descirption = "(Required) Specifies the default action of allow or deny when no other rules match. Valid options are Deny or Allow"
+  description = "(Required) Specifies the default action of allow or deny when no other rules match. Valid options are Deny or Allow"
   default = "Deny"
 }
 
 variable "virtual_network_subnet_ids" {
-  descirption = "(Required) A list of resource ids for subnets."
+  description = "(Required) A list of resource ids for subnets."
   tyoe = "list"
 }
